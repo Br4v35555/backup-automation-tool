@@ -23,7 +23,9 @@ Simple shell-based toolkit for scheduled backups and log archiving.
 chmod +x backup.sh archive_logs.sh remote_sync.sh
 ./backup.sh
 ./archive_logs.sh
+./remote_sync.sh
 \`\`\`
+
 
 ## Configuration
 
