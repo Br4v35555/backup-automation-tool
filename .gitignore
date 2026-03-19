@@ -1,0 +1,6 @@
+*.tar.gz
+*.tgz
+*.log
+/tmp/
+.cache/
+runtime/
