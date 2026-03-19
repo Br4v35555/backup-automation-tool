@@ -1,97 +1,50 @@
-# 🚀 Backup Automation Tool
+# 🛡️ Backup Automation Tool 🔄
 
-[![GitHub stars](https://img.shields.io/github/stars/MichealEpstein364/backup-automation-tool?style=social)](https://github.com/MichealEpstein364/backup-automation-tool)
-[![GitHub license](https://img.shields.io/github/license/MichealEpstein364/backup-automation-tool)](https://github.com/MichealEpstein364/backup-automation-tool/blob/master/LICENSE)
-[![Shellcheck](https://img.shields.io/badge/shellcheck-passed-brightgreen)](https://github.com/MichealEpstein364/backup-automation-tool/actions)
+[![Shellcheck](https://github.com/MichealEpstein364/backup-automation-tool/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/MichealEpstein364/backup-automation-tool/actions/workflows/shellcheck.yml)
 
-Simple, lightweight shell-based toolkit for **scheduled backups**, **log archiving**, and **remote sync preparation**. Perfect for cron-based Linux environments.
-
-## ✨ Features
-
-| Feature | Description |
-|---------|-------------|
-| 📦 Timestamped backups | Archive user data into compressed tar.gz |
-| 📋 Log archiving | Compress system logs for retention |
-| 🔄 Remote sync prep | Stage metadata for transport workflows |
-| ⚡ Minimal deps | Pure bash + tar (no external tools) |
-| 🛠️ Configurable | Full config.conf support |
-
-## 📁 Project Structure
-
-```
-backup-automation-tool/
-├── 📄 README.md             <- this file
-├── ⚙️ config.conf          <- settings
-├── 🔧 backup.sh            <- core backup script
-├── 📦 archive_logs.sh      <- log archiver
-├── 🔀 remote_sync.sh       <- sync prep
-├── ⏰ cron/backup.cron      <- schedule template
-├── 📚 docs/                 <- guides & troubleshooting
-├── 🧪 tests/                <- basic tests
-└── 🛠️ scripts/             <- utilities
-```
+**Simple shell toolkit for backups, archiving, staged remote prep.**
 
 ## 🚀 Quick Start
 
-### 1. Setup
-```bash
-git clone https://github.com/MichealEpstein364/backup-automation-tool.git
-cd backup-automation-tool
-chmod +x *.sh scripts/*.sh
-cp config.conf.example config.conf  # edit as needed
-```
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `backup.sh` | Data backups | `./backup.sh` |
+| `archive_logs.sh` | Log compression | `./archive_logs.sh` |
+| `remote_sync.sh` | Remote metadata prep | `./remote_sync.sh` |
 
-### 2. Test run
-```bash
+```
+chmod +x *.sh
 ./backup.sh
-./archive_logs.sh
-./remote_sync.sh
 ```
 
-### 3. Cron schedule
-```bash
-crontab -e
-# Add lines from cron/backup.cron
+## 📁 Layout
+
+```
+.
+├── scripts/     # helpers (cleanup, healthcheck)
+├── cron/        # schedules
+├── docs/        # guides
+├── tests/       # stubs
+└── docker/      # WIP container
 ```
 
-## ⚙️ Configuration
-
-Edit `config.conf`:
-
-```bash
-BACKUP_DIR=/tmp/backups
-SOURCE_DIR=/home/user/data
-LOG_DIR=/var/log
-RETENTION_DAYS=7
-ENABLE_REMOTE=true
-REMOTE_POLICY=staged
-```
-
-## 🧪 Testing
+## 📈 Perf
 
 ```bash
-cd tests
-./test_backup.sh
-./test_archive.sh
-./test_remote_sync.sh
+python perf_test.py
 ```
 
-## 📖 Documentation
+## Config
 
-- [Setup Guide](docs/setup.md)
-- [Troubleshooting](docs/troubleshooting.md)
-- [Roadmap](docs/roadmap.md)
+See `config.conf` (RETENTION_DAYS=7, ENABLE_REMOTE=true).
 
-## 🤝 Contributing
+## Contributors
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [pull request template](.github/pull_request_template.md).
+- Aiman Faiz (core)
+- Faris Hakim (QA/CI)
+- Nadev Amir (remote)
 
-## 📄 License
+External PRs welcome!
 
-MIT - see [LICENSE](LICENSE).
-
----
-
-⭐ **Star this repo if useful!**  
-🐛 [Found a bug? Open an issue](https://github.com/MichealEpstein364/backup-automation-tool/issues/new)
+*Noise: Experimental branches WIP encryption/notifications. Ignore SSH cleanup commits.*
 
